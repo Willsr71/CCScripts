@@ -57,7 +57,7 @@ function restockItem(referenceItem)
     
     print("+", needed - missing, referenceItem.displayName)
 
-    main.export(referenceItem.name, referenceItem.meta, needed - missing, "west", referenceItem.nbt)
+    main.export(referenceItem.name, referenceItem.meta, needed - missing, "south", referenceItem.nbt)
 end
 
 function purgeItem(subnetItem)
@@ -69,7 +69,7 @@ function purgeItem(subnetItem)
     if subnetItem.amount <= needed then return end
     print("-", subnetItem.amount - needed, subnetItem.displayName)
 
-    subnet.export(subnetItem.name, subnetItem.meta, subnetItem.amount - needed, "west", subnetItem.nbt)
+    subnet.export(subnetItem.name, subnetItem.meta, subnetItem.amount - needed, "south", subnetItem.nbt)
 end
 
 function restock()
@@ -92,5 +92,6 @@ while true do
     craftable = main.listCraft()
     purge()
     restock()
-    os.sleep(10)
+    os.sleep(60)
+    sleep(1)
 end
